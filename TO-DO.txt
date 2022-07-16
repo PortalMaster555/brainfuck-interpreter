@@ -3,4 +3,8 @@ Goal: An interpreter for Brainfuck, capable of reading from a file or taking inp
 Program Outline:
 
 1.) Accept flags from the command line to indicate whether a file is being used or if the user is inputting Brainfuck code
+	// "-file" could indicate the file to be used
+	// According to K&R, the args should be accepted in any order
+	// Thus, a loop through all *argv is necessary
 
+2.)
