@@ -1,0 +1,1 @@
+Goal: An interpreter for Brainfuck, capable of reading from a file or taking input from the user (scary!)
