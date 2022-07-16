@@ -1,4 +1,4 @@
-##brainfuck-interpreter
+# brainfuck-interpreter
 
 Interprets Brainfuck, an esoteric programming language.
 
