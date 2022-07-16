@@ -1,1 +1,6 @@
 Goal: An interpreter for Brainfuck, capable of reading from a file or taking input from the user (scary!)
+
+Program Outline:
+
+1.) Accept flags from the command line to indicate whether a file is being used or if the user is inputting Brainfuck code
+
