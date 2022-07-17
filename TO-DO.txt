@@ -3,8 +3,31 @@ Goal: An interpreter for Brainfuck, capable of reading from a file or taking inp
 Program Outline:
 
 1.) Accept flags from the command line to indicate whether a file is being used or if the user is inputting Brainfuck code
-	// "-file" could indicate the file to be used
+	// "--file" could indicate the file to be used
 	// According to K&R, the args should be accepted in any order
 	// Thus, a loop through all *argv is necessary
 
-2.)
+2.) Considering a file with Brainfuck code:
+	// There are eight characters, with their functions translated as such:
+
+	> : Shift right along the tape
+	
+	< : Shift left along the tape
+	
+	+ : Increment the byte at the current pos. by 1
+	
+	- : Decrement the byte at the current pos. by 1
+	
+	. : Print the current byte
+
+	, : Accept a byte of input from the user, stored at curr. pos.
+
+	[ :	If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ] command.
+
+	] : If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching [ command. 
+
+	// This necessarily means that there must be two arrays, one an array of characters, each 1 byte, and an instruction array taken from the input method of choice.
+	// Standard Brainfuck dictates an infinite tape, but a large one should suffice, especially because most Brainfuck programs are very small.
+
+
+	//Another consideration: If interpreted char by char, the language would run into an issue when it met a ']' char, as it would not have memory of the point to return to. As such, it is necessary to store the entire program at most, or at least as far back as the first '[' not already closed with a ']' that evaluated properly.
