@@ -5,7 +5,7 @@
 
 #include "bffunc.h"
 
-char *inputFilename = "test.bf";
+char *inputFilename = "main.bf";
 
 char input;
 
@@ -21,7 +21,10 @@ int main(int argc, char **argv)
 
 	tape tape = zeroTape();
 	tape.position = 512; //setting pointer to middle of tape
-	
+
+	char userInput[2];
+
+	printf("Output: ");
 	//UPDATE TAPE AND CODE
 	while(code.position <= code.length)
 	{
@@ -29,27 +32,22 @@ int main(int argc, char **argv)
 		{
 			case '>':
 				tape.position++;
-				code.position++;
 				break;
 			case '<':
 				tape.position--;
-				code.position++;
 				break;
 			case '+':
 				tape.array[tape.position]++;
-				code.position++;
 				break;
 			case '-':
 				tape.array[tape.position]--;
-				code.position++;
 				break;
 			case '.':
 				printf("%c", tape.array[tape.position]);
-				code.position++;
 				break;
 			case ',':
-
-				code.position++;
+				fgets(userInput, 2, stdin);
+				tape.array[tape.position] = userInput[0];
 				break;
 			case '[':
 				if(tape.array[tape.position] == 0)
@@ -64,15 +62,26 @@ int main(int argc, char **argv)
 						}
 					}
 				}
-				code.position++;
+				else
+				{
+					code.brackStack[code.bsIndex++] = code.position;
+				//	printf(" Bracket Loc: %d  ", code.brackStack[code.bsIndex]);
+				}
 				break;
 			case ']':
-				
+				if(tape.array[tape.position] != 0)
+				{
+				//	printf("Jump bracket: %d ", code.brackStack[code.bsIndex - 1]);
+					code.position = code.brackStack[code.bsIndex - 1];
+				}
+				else
+				{
+					code.brackStack[code.bsIndex--] = -1;
+				}
 				break;
 		}
 		code.position++;
 	}	
-	
 	fclose(bfFile);
 	return 0;
 }

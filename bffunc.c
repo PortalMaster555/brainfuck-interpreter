@@ -22,6 +22,9 @@ tape zeroTape()
 	memset(tape.array, 0, KIB * sizeof(char)); //yes i know sizeof(char) isnt needed
 	tape.length = 0;
 	tape.position = 0;
+
+	memset(tape.brackStack, 0, KIB * sizeof(int));
+	tape.bsIndex = 0;
 	return tape;
 }
 

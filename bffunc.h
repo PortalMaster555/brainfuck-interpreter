@@ -6,7 +6,8 @@ typedef struct tape
 	int length;
 	int position;
 
-	
+	int brackStack[KIB]; //locations of [
+	int bsIndex;
 
 } tape;
 
