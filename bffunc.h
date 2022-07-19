@@ -5,8 +5,11 @@ typedef struct tape
 	char array[KIB];
 	int length;
 	int position;
+
+	
+
 } tape;
 
 FILE *openFile(char *inputFilename);
+tape zeroTape();
 tape loadBrainfuck(FILE *bfFile);
-

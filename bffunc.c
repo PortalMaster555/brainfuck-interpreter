@@ -43,3 +43,4 @@ tape loadBrainfuck(FILE *bfFile)
 	code.array[code.length] = '\0';
 	return code;
 }
+
