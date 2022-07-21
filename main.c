@@ -6,6 +6,7 @@
 #include "bffunc.h"
 
 char *inputFilename = "main.bf";
+char *outputFilename = "out.txt";
 
 char input;
 
@@ -13,6 +14,7 @@ int main(int argc, char **argv)
 {
 	//OPEN FILE CONTAINING BRAINFUCK
 	FILE *bfFile = openFile(inputFilename);
+	FILE *outFile = openFile(outputFilename);
 
 	//LOAD BRAINFUCK INTO MEMORY, IGNORING COMMENTS
 	tape code = loadBrainfuck(bfFile);
@@ -44,6 +46,7 @@ int main(int argc, char **argv)
 				break;
 			case '.':
 				printf("%c", tape.array[tape.position]);
+				fputc(tape.array[tape.position], outFile);
 				break;
 			case ',':
 				fgets(userInput, 2, stdin);

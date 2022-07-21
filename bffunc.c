@@ -7,7 +7,7 @@
 
 FILE *openFile(char *inputFilename)
 {
-	FILE *bfFile = fopen(inputFilename, "r");
+	FILE *bfFile = fopen(inputFilename, "r+");
 	if(bfFile == NULL)
 	{
 		fprintf(stderr, "Failed to open file \"%s\": %s\n", inputFilename, strerror(errno));
